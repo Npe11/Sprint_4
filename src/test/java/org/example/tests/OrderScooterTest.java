@@ -56,7 +56,7 @@ public class OrderScooterTest {
 //        driver = new FirefoxDriver(options);
 
         driver.manage().window().maximize();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(MainPage.BASE_URL);
         wait = new WebDriverWait(driver, 10);
         mainPage = new MainPage(driver, wait);
         orderPage = new OrderPage(driver);

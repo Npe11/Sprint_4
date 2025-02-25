@@ -33,6 +33,10 @@ public class OrderPage {
     // Подтверждение заказа
     private final By orderSuccessHeader = By.xpath("//div[contains(@class, 'Order_ModalHeader') and contains(., 'Заказ оформлен')]");
 
+    // Локатор для станции метро в виде шаблона
+    private final String metroStationOptionXpathTemplate =
+            "//ul[contains(@class, 'select-search__options')]//div[contains(@class, 'Order_Text__2broi') and normalize-space()='%s']";
+
     private final WebDriver driver;
 
     public OrderPage(WebDriver driver) {
@@ -52,9 +56,8 @@ public class OrderPage {
     public void selectMetroStation(String metroStation) {
         WebElement metroInput = driver.findElement(By.xpath("//input[@placeholder='* Станция метро']"));
         metroInput.click();
-        By optionLocator = By.xpath("//ul[contains(@class, 'select-search__options')]//div[contains(@class, 'Order_Text__2broi') and normalize-space()='" + metroStation + "']");
-        WebElement option = driver.findElement(optionLocator);
-        option.click();
+        By metroStationOptionLocator = By.xpath(String.format(metroStationOptionXpathTemplate, metroStation));
+        driver.findElement(metroStationOptionLocator).click();
     }
 
     public void clickNextButton() {

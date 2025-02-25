@@ -11,6 +11,8 @@ import java.util.List;
 
 public class MainPage {
 
+    public static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
+
     // Верхняя кнопка "Заказать"
     private final By orderButtonTop = By.cssSelector("button.Button_Button__ra12g");
 
